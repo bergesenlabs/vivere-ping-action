@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: ./scripts/export.sh
 
-      - uses: nicholasbergesen/vivere-ping-action@v1
+      - uses: bergesenlabs/vivere-ping-action@v1
         with:
           url: ${{ secrets.VIVERE_PING_URL }}
 ```
@@ -59,7 +59,7 @@ Waiting for a missed deadline tells you up to one period late. Pass `job.status`
 that always runs and you are told at once:
 
 ```yaml
-      - uses: nicholasbergesen/vivere-ping-action@v1
+      - uses: bergesenlabs/vivere-ping-action@v1
         if: always()
         with:
           url: ${{ secrets.VIVERE_PING_URL }}
@@ -78,7 +78,7 @@ jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - uses: nicholasbergesen/vivere-ping-action@v1
+      - uses: bergesenlabs/vivere-ping-action@v1
         with:
           url: ${{ secrets.VIVERE_PING_URL }}
           status: start
@@ -86,7 +86,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: ./scripts/export.sh 2>&1 | tee /tmp/export.log
 
-      - uses: nicholasbergesen/vivere-ping-action@v1
+      - uses: bergesenlabs/vivere-ping-action@v1
         if: always()
         with:
           url: ${{ secrets.VIVERE_PING_URL }}
@@ -106,7 +106,7 @@ Anything in `log` is stored with the run and shown beside the failure. Vivere ke
       - if: always()
         run: echo "LOG<<EOF" >> $GITHUB_ENV && tail -c 8000 /tmp/out.txt >> $GITHUB_ENV && echo "EOF" >> $GITHUB_ENV
 
-      - uses: nicholasbergesen/vivere-ping-action@v1
+      - uses: bergesenlabs/vivere-ping-action@v1
         if: always()
         with:
           url: ${{ secrets.VIVERE_PING_URL }}
